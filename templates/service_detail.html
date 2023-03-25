@@ -9,12 +9,7 @@
                 <p>{{ service.desc }}</p>
             </div>
             <div class="col-md-4">
-                <h3>Book Now</h3>
-                <form method="POST" action="{% url 'book_service' service.id %}">
-                    {% csrf_token %}
-                    {{ booking_form.as_p }}
-                    <button type="submit" class="btn btn-primary">Book Now</button>
-                </form>
+                <a href="{% url 'book_service' service.id %}" class="btn btn-primary">Book</a>
             </div>
         </div>
     </div>
