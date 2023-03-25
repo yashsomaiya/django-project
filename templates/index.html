@@ -4,6 +4,27 @@
     <h1>Welcome to our wedding services website!</h1>
     <p>Here are some of our featured services:</p>
 
+    <style>
+        .card {
+            height: 100%;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            height: 100px;
+            overflow: hidden;
+        }
+    </style>
+
     <div class="row">
         {% for service in services %}
             <div class="col-md-4 mb-4">
