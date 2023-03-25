@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Book {{ service.title }}</h1>
+  <form method="post" action="{% url 'book_service' service.id %}">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+    <br>
+    <label for="phone">Phone:</label>
+    <input type="tel" name="phone" required>
+    <br>
+    <label for="payment">Payment made?</label>
+    <input type="checkbox" name="payment">
+    <br>
+    <input type="submit" value="Book now">
+  </form>
+{% endblock %}

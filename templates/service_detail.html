@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>{{ service.title }}</h1>
+                <img src="{{ service.image.url }}" class="img-fluid">
+                <p>{{ service.desc }}</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Book Now</h3>
+                <form method="POST" action="{% url 'book_service' service.id %}">
+                    {% csrf_token %}
+                    {{ booking_form.as_p }}
+                    <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
