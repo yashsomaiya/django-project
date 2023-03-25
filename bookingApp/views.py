@@ -29,23 +29,23 @@ def book_service(request, service_id):
         name = request.POST['name']
         email = request.POST['email']
         phone = request.POST['phone']
-        address = request.POST['address']
-        country = request.POST['country']
-        customer = Customer(name=name, email=email, phone=phone, address=address, country=country)
+        # address = request.POST['address']
+        # country = request.POST['country'] address=address, country=country
+        customer = Customer(name=name, email=email, phone=phone,)
         customer.save()
         booking = WeddingBooking(service=service, customer=customer, featured_package_price=service.featured_package_price)
         booking.save()
         messages.success(request, 'Booking has been created!')
         return redirect(reverse('booking_detail', args=(booking.id,)))
-    return render(request, 'book_service.html', {'service': service})
+    return render(request, 'booking_form.html', {'service': service})
 
 def bookings(request):
     bookings = WeddingBooking.objects.all()
     return render(request, 'bookings.html', {'bookings': bookings})
 
 def booking_detail(request, booking_id):
-    booking = get_object_or_404(WeddingBooking, id=booking_id)
-    return render(request, 'booking_detail.html', {'booking': booking})
+    # booking = get_object_or_404(WeddingBooking, id=booking_id) {'booking': booking}
+    return render(request, 'booking_detail.html')
 
 def pay_booking(request, booking_id):
     booking = get_object_or_404(WeddingBooking, id=booking_id)
