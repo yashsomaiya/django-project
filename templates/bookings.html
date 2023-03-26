@@ -14,24 +14,29 @@
         <table class="table table-hover">
             <thead class="bg-dark text-white text-center">
               <tr>
-                <th scope="col">Booking ID</th>
-                <th scope="col">Booking Date</th>
+                <th scope="col">Service Booked</th>
                 <th scope="col">Booking Time</th>
                 <th scope="col">Booking Status</th>
                 <th scope="col">Booking Details</th>
-                <th scope="col">Ticket</th>
                 <th scope="col">Cancel Booking</th>
               </tr>
             </thead>
             <tbody>
                 {% for booking in bookings %}
               <tr class="text-center">
-                <th scope="row">{{booking.id}}</th>
                 <td>{{booking.service}}</td>
                 <td>{{booking.phone}}</td>
                 <td>{{booking.featured_package_price}}</td>
-{#                <td><button type="submit" class="btn btn-info"><a href="{% url 'booking_detail' %}/{{booking.id}}" class="text-white" style="text-decoration: none;">View Details</a></button></td>#}
-                <td><button type="submit" class="btn btn-success"><a href="booking_history/ticket/{{booking.id}}" class="text-white" style="text-decoration: none;" target="_blank">Get Ticket</a></button></td>
+                <td>
+                    <button type="submit" class="btn btn-info">
+                    <a href="{% url 'booking_detail' booking.id %}" class="text-white" style="text-decoration: none;">View Details</a>
+                  </button>
+                </td>
+                <form action="cancel_booking" method="post">
+                  {% csrf_token %}
+                  <td><button type="submit" class="btn btn-danger">Cancel Booking</button></td>
+                    <input type="hidden" name="booking_id" value="{{booking.pk}}">
+                </form>
               </tr>
               {% endfor %}
             </tbody>

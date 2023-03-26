@@ -14,6 +14,7 @@ urlpatterns = [
     path ( 'bookings/' , views.bookings , name = 'bookings' ) ,
     path ( 'booking/<uuid:booking_id>/' , views.booking_detail , name = 'booking_detail' ) ,
     path ( 'booking/<uuid:booking_id>/pay/' , views.pay_booking , name = 'pay_booking' ) ,
+    path ('bookings/cancel_booking', CancelBooking.as_view(), name="cancel_booking"),
     # path('admin/', admin.site.urls),
     path('about', About.as_view(), name="about"),
 

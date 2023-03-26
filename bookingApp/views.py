@@ -127,3 +127,10 @@ class Feedbacks(View):
         else:
             messages.warning(request, "Please login first to post feedback.")
             return redirect('feedback')
+
+class CancelBooking(View):
+    def post(self, request):
+        id = request.POST['booking_id']
+        WeddingBooking.objects.filter(id=id).delete()
+        messages.success(request, 'Your booking canceled successfully')
+        return redirect(request.META['HTTP_REFERER'])
