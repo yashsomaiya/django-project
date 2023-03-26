@@ -36,7 +36,24 @@ def book_service(request, service_id):
             booking.save()
             messages.success(request, 'Booking has been created!')
             return redirect(reverse('booking_detail', args=(booking.id,)))
-    return render(request, 'booking_form.html',{'form':form,'service':service})
+    return render(request, 'booking_form.html', {'form': form, 'service': service})
+
+
+def service_add(request):
+    # service = get_object_or_404(Service)
+    services = Service.objects.all()
+    form = BookingForm()
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            # booking.service_id = service_id
+            # booking.featured_package_price = service.featured_package_price
+            booking.save()
+            messages.success(request, 'Booking has been created!')
+            return redirect(reverse('service_details', args=(booking.id,)))
+    return render(request, 'Add_servies.html', {'services': services})
+
     # if request.method == 'POST':
     #     name = request.POST['name']
     #     email = request.POST['email']
@@ -53,13 +70,12 @@ def book_service(request, service_id):
 
 def bookings(request):
     bookings = WeddingBooking.objects.all()
-    email = request.user.email
-    bookings = bookings.filter(email__exact=email)
     return render(request, 'bookings.html', {'bookings': bookings})
 
+
 def booking_detail(request, booking_id):
-    booking = get_object_or_404(WeddingBooking, id=booking_id)
-    return render(request, 'booking_detail.html',{'booking': booking})
+    # booking = get_object_or_404(WeddingBooking, id=booking_id) {'booking': booking}
+    return render(request, 'booking_detail.html')
 
 def pay_booking(request, booking_id):
     booking = get_object_or_404(WeddingBooking, id=booking_id)

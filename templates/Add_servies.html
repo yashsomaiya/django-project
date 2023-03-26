@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        form {
+          margin: auto;
+          width: 50%;
+        }
+
+        input[type=text], input[type=email], input[type=tel], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+
+        .container {
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+
+        .error-message {
+          color: red;
+        }
+
+    </style>
+{% endblock %}
+{% block content %}
+  <h1 style="margin-top: 8px; margin-left: 17px">   Add Service {{ service.title }}</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div>
+        <label for="{{ form.text_field1.id_for_label }}">Title:</label>
+        <input type="text" id="{{ form.text_field1.id_for_label }}" name="{{ form.text_field1.name }}" value="{{ form.text_field1.value }}">
+    </div>
+
+    <div>
+        <label for="{{ form.dropdown_field.id_for_label }}">Service Type:</label>
+        <select id="{{ form.dropdown_field.id_for_label }}" name="{{ form.dropdown_field.name }}" style="margin-bottom: 13px">
+            {% for choice in form.dropdown_field.choices %}
+            <option value="{{ choice.0 }}" {% if choice.0 == form.dropdown_field.value %}selected{% endif %}>{{ choice.1 }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <label for="{{ form.text_field2.id_for_label }}">Header</label>
+        <input type="text" id="{{ form.text_field2.id_for_label }}" name="{{ form.text_field2.name }}" style="margin-top:-1px" value="{{ form.text_field2.value }}">
+    </div>
+
+    <div>
+        <label for="{{ form.integer_field.id_for_label }}">Desc</label>
+        <textarea id="{{ form.integer_field.id_for_label }}" name="{{ form.integer_field.name }}" style="width: 657px"></textarea>
+    </div>
+
+    <div>
+        <label for="{{ form.text_field.id_for_label }}">City:</label>
+        <input type="text" id="{{ form.text_field.id_for_label }}" name="{{ form.text_field.name }}" style="margin-top:-1px" value="{{ form.text_field.value }}">
+    </div>
+
+    <div>
+        <label for="{{ form.text_state.id_for_label }}">State:</label>
+        <input type="text" id="{{ form.text_state.id_for_label }}" style="margin-bottom: 13px; margin-top: -1px" name="{{ form.text_state.name }}" value="{{ form.text_state.value }}">
+    </div>
+
+    <div>
+        <label for="{{ form.text_feature.id_for_label }}">Featured package price:</label>
+        <input type="text" id="{{ form.text_feature.id_for_label }}" name="{{ form.text_feature.name }}" value="{{ form.text_feature.value }}" style="margin-bottom: 13px; margin-top: -1px">
+    </div>
+
+    <div>
+        <label for="{{ form.add_photo_field.id_for_label }}">Add Photo:</label><br/>
+        <input type="file" id="{{ form.add_photo_field.id_for_label }}" name="{{ form.add_photo_field.name }}" multiple>
+    </div>
+<br/>
+
+        <button type="submit" class="btn btn-success"><a href="{% url 'index' %}">Submit</a></button>
+
+</form>
+
+<!--  <form>-->
+<!--    {% csrf_token %}-->
+<!--      {{ form.as_p }}-->
+<!--      <input type="hidden" name="service_id" value="{{ service.id }}">-->
+<!--      <input type="hidden" name="featured_package_price" value="{{ service.featured_package_price }}">-->
+
+<!--     <label for="{{ form.text_field1.id_for_label }}">Text Field 1:</label>-->
+<!--      <input type="text" name="name" required>-->
+<!--        {{ form.text_field1 }}-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="{{ form.dropdown_field.id_for_label }}">Dropdown Field:</label>-->
+<!--        {{ form.dropdown_field }}-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="{{ form.text_field2.id_for_label }}">Text Field 2:</label>-->
+<!--        {{ form.text_field2 }}-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="{{ form.integer_field.id_for_label }}">Integer Field:</label>-->
+<!--        {{ form.integer_field }}-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="{{ form.image_field.id_for_label }}">Image Field:</label>-->
+<!--        {{ form.image_field }}-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="{{ form.add_photo_field.id_for_label }}">Add Photo:</label>-->
+<!--        {{ form.add_photo_field }}-->
+<!--    </div>-->
+<!--    <button type="submit" class="btn btn-success">Confirm</button>-->
+
+<!--</form>-->
+<!-- <label for="name">Name:</label>-->
+<!--    <input type="text" name="name" required>-->
+<!--{#    <br>#}-->
+<!--{#    <label for="email">Email:</label>#}-->
+<!--{#    <input type="email" name="email" required>#}-->
+<!--{#    <br>#}-->
+<!--{#    <label for="phone">Phone:</label>#}-->
+<!--{#    <input type="tel" name="phone" required>#}-->
+<!--{#    <br>#}-->
+<!--{#    <label for="payment">Payment made?</label>#}-->
+<!--{#    <input type="checkbox" name="payment">#}-->
+<!--{#    <br>#}-->
+<!--{#    <input type="submit" value="Book now">#}-->
+
+<!--  </form>-->
+{% endblock %}
