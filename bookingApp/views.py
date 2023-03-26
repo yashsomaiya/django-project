@@ -53,11 +53,13 @@ def book_service(request, service_id):
 
 def bookings(request):
     bookings = WeddingBooking.objects.all()
+    email = request.user.email
+    bookings = bookings.filter(email__exact=email)
     return render(request, 'bookings.html', {'bookings': bookings})
 
 def booking_detail(request, booking_id):
-    # booking = get_object_or_404(WeddingBooking, id=booking_id) {'booking': booking}
-    return render(request, 'booking_detail.html')
+    booking = get_object_or_404(WeddingBooking, id=booking_id)
+    return render(request, 'booking_detail.html',{'booking': booking})
 
 def pay_booking(request, booking_id):
     booking = get_object_or_404(WeddingBooking, id=booking_id)
