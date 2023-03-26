@@ -8,8 +8,24 @@ from django.views import View
 from django.contrib.auth.models import User, auth
 from .models import Service, Customer, WeddingBooking, Feedback, ContactForm, ContactNumber
 
+def accountlogin(request):
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
 
-@login_required(login_url='/login')
+        user = auth.authenticate(username=username, password=password)
+
+        if username is not None and password is not None:
+            if user is not None:
+                auth.login(request, user)
+                messages.info(request, "Successfully logged in!")
+                return redirect('index')
+            else:
+                messages.info(request, "invalid credentials")
+                return redirect('index')
+    else:
+        return render(request, 'login.html')
+
 def login(request):
     if request.method == 'POST':
         username = request.POST["username"]
