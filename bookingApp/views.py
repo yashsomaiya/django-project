@@ -53,6 +53,8 @@ def book_service(request, service_id):
 
 def bookings(request):
     bookings = WeddingBooking.objects.all()
+    email = request.user.email
+    bookings = bookings.filter(email__exact=email)
     return render(request, 'bookings.html', {'bookings': bookings})
 
 def booking_detail(request, booking_id):
