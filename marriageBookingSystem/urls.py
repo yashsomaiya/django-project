@@ -19,4 +19,8 @@ from django.urls import path,include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path ( '' , include ( 'bookingApp.urls' ) ) ,
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
+LOGIN_REDIRECT_URL = '/'

@@ -6,14 +6,19 @@ import uuid
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
+
 # Create your models here.
 
 class Customer(models.Model):
-    name = models.CharField(max_length=122)
-    email = models.EmailField(unique=True)
+    name = models.CharField(max_length=122, default='test')
+    email_id = models.EmailField(default='xx@xx.com')
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=255)
-    country = models.CharField(max_length=255)
+    country = models.CharField(max_length=255,blank=True,null=True)
+
+    class Meta:
+        verbose_name = "Customers"
+        verbose_name_plural = "Customers"
 
     def __str__(self):
         return self.name
@@ -25,6 +30,11 @@ class Service(models.Model):
         ('video', 'Videography'),
         ('decor', 'Decoration'),
         ('catering', 'Catering'),
+        ('music', 'Music DJ'),
+        ('makeup', 'Makeup'),
+        ('wedding_planner', 'Wedding Planner'),
+        ('resort', 'Resort')
+
     )
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -42,11 +52,12 @@ class Service(models.Model):
     def __str__(self):
         return self.title
 
+
 class WeddingBooking(models.Model):
     Currency_CHOICES = (
         ('CAD', 'CAD'),
         ('USD', 'USD'),
-        ('INR','INR')
+        ('INR', 'INR')
     )
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -60,6 +71,7 @@ class WeddingBooking(models.Model):
     def __str__(self):
         return f'{self.service.title} booking for {self.customer.name} on {self.date_booked}'
 
+
 class Feedback(models.Model):
     name = models.CharField(verbose_name=_("user name"), max_length=255, null=True, blank=True)
     feedback = models.TextField(null=True, blank=True)
@@ -68,6 +80,7 @@ class Feedback(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class ContactForm(models.Model):
     name = models.CharField(verbose_name=_("Sender Name"), max_length=255, null=True, blank=True)
@@ -79,7 +92,8 @@ class ContactForm(models.Model):
 
 class ContactNumber(models.Model):
     phone = models.CharField(verbose_name=_("Station Phone Number"), max_length=255, null=True, blank=True)
-    emergency_center = models.CharField(verbose_name=_("Emergency Center Phone Number"), max_length=255, null=True, blank=True)
+    emergency_center = models.CharField(verbose_name=_("Emergency Center Phone Number"), max_length=255, null=True,
+                                        blank=True)
     help_desk = models.CharField(verbose_name=_("Help Desk Phone Number"), max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)

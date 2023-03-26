@@ -1,16 +1,164 @@
 {% extends 'base.html' %}
+<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css"/>
+{% block style %}
+     <style>
+     @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+     @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+
+      button{
+         width: 80%;
+           justify-content: center;
+  align-items: center;
+     }
+
+       h1 {
+        font-size: 2.5em;
+        color: antiquewhite;
+        text-align: center;
+        text-transform: uppercase;
+      }
+       .wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+}
+       .red-tri {
+    width: 350px;
+    height: 700px;
+    background-color: rgb(255, 0, 0);
+    opacity: 35%;
+    transform-origin: center;
+    animation: 15s linear infinite turn2;
+    position: absolute;
+    top: 0;
+    left: 25%;
+    z-index: -1;
+}
+.blue-tri {
+    width: 350px;
+    height: 700px;
+    background-color: rgb(0, 0, 133);
+    opacity: 35%;
+    transform-origin: center;
+    animation: 15s linear infinite turn2;
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    z-index: -1;
+}
+.yellow-tri {
+    width: 350px;
+    height: 700px;
+    background-color: rgb(255, 255, 0);
+    opacity: 35%;
+    transform-origin: center;
+    animation: 15s linear infinite turn3;
+    position: absolute;
+    top: 0;
+    right: 25%;
+    z-index: -1;
+}
+.pink-tri {
+    width: 350px;
+    height: 700px;
+    background-color: rgb(255, 50, 100);
+    opacity: 35%;
+    transform-origin: center;
+    animation: 15s linear infinite turn3;
+    position: absolute;
+    bottom: 0%;
+    right: 25%;
+    z-index: -1;
+}
+
+@keyframes turn {
+
+    50% {
+       transform: rotate(270deg) scaleX(-1) skew(45deg);
+    }
+}
+@keyframes turn2 {
+
+    50% {
+       transform: rotate(-90deg) scaleX(-1) skew(45deg);
+    }
+}
+@keyframes turn3 {
+
+    50% {
+       transform: rotate(90deg) scaleX(-1) skew(-45deg);
+    }
+}
+.col-md-6{
+    margin-top:0%;
+    padding-right: 2%;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.text-center{
+    margin-top: 2%;
+}
+     </style>
+{% endblock %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
 
 {% block content %}
-    <div class="container">
+    <!--div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1>{{ service.title }}</h1>
-                <img src="{{ service.image.url }}" class="img-fluid">
-                <p>{{ service.desc }}</p>
+                <h1></h1>
+                <img src="https://source.unsplash.com/1600x900/?" class="img-fluid">
+                <p></p>
             </div>
             <div class="col-md-4">
-                <a href="{% url 'book_service' service.id %}" class="btn btn-primary">Book</a>
+                <a href="" class="btn btn-primary">Book</a>
             </div>
         </div>
-    </div>
+    </div-->
+
+    <div class="body-container">
+        <div class="text-center" >
+        <h1>{{ service.title  }}</h1>
+        </div>
+      <div class="wrapper">
+      <div class="red-tri"></div>
+      <div class="blue-tri"></div>
+      <div class="yellow-tri"></div>
+      <div class="pink-tri"></div>
+
+      <div class="row" >
+      <div class = "col-md-6" style="padding-left: 5%;">
+
+          <div class="carousel-inner">
+              <img src="https://source.unsplash.com/1600x900/?{{service.header}},{{service.service_type}}" class="img-fluid" style="width:50vw;height:70vh;" >
+          </div>
+      </div>
+      <div class="col-md-6" >
+            <h2>Book Our Services</h2><br><br>
+            <h4>{{ service.desc }}</h4><br><br>
+            <h4>{{ service.header }}</h4><br><br>
+            <h4>{{ service.city }} - {{ service.state }}</h4><br><br>
+            <h4>{{ service.featured_package_price }}</h4><br><br>
+      </div>
+      </div>
+      </div>
+          <div class="button-container">
+         <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+         <a href="{% url 'book_service' service.id %}">Book Now</a>
+         </button>
+         </div>
+
+
+</div>
 {% endblock %}

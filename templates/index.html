@@ -5,34 +5,80 @@
     <p>Here are some of our featured services:</p>
 
     <style>
-        .card {
-            height: 100%;
-        }
+       .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-image: linear-gradient(to bottom right, #8D5B4C, #D88B5C, #FFB378);
+  animation: gradient 5s ease infinite;
+}
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+.card {
+  background-color: #FFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
 
-        .card-title {
-            font-size: 20px;
-        }
+.card:hover {
+  transform: translateY(-10px);
+}
 
-        .card-text {
-            font-size: 16px;
-            height: 100px;
-            overflow: hidden;
-        }
+.card img {
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #FF6B6B;
+  border-color: #FF6B6B;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #D64161;
+  border-color: #D64161;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
     </style>
 
     <div class="row">
         {% for service in services %}
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img class="card-img-top" src="{{ service.image.url}}" alt="{{ service.title }}">
+                    <img class="card-img-top" src="https://source.unsplash.com/1600x900/?{{service.header}},{{service.service_type}}" alt="{{ service.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ service.title }}</h5>
-                        <p class="card-text">{{ service.desc }}</p>
+                        <p class="card-text">{{ service.header }}</p>
+                        <h3 class="card-text" id="eventschedule" style="color:red;font-family:pt seriff;padding-top:10px;font-weight: bolder;">${{service.featured_package_price}}</h3>
                         <a href="{% url 'service_detail' service.id %}" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
