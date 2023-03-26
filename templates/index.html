@@ -23,22 +23,104 @@
             height: 100px;
             overflow: hidden;
         }
+
     </style>
 
-    <div class="row">
-        {% for service in services %}
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="{{ service.image.url}}" alt="{{ service.title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ service.title }}</h5>
-                        <p class="card-text">{{ service.desc }}</p>
-                        <a href="{% url 'service_detail' service.id %}" class="btn btn-primary">View Details</a>
-                    </div>
+  <div class="row">
+    <div class="col-md-6">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by service name" id="search-input">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group mb-3">
+            <select class="form-control" id="price-filter">
+                <option value="all">All prices</option>
+                <option value="0-1000">$0-$1000</option>
+                <option value="1000-2000">$1000-$2000</option>
+                <option value="2000-3000">$2000-$3000</option>
+                <option value="3000-">$3000+</option>
+            </select>
+
+        </div>
+    </div>
+</div>
+
+    <div class="card-container row">
+    {% for service in services %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="{{ service.image.url}}" alt="{{ service.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.title }}</h5>
+                    <p class="card-text">{{ service.desc }}</p>
+                    <p class="card-text card-price">{{ service.featured_package_price }}</p>
+
+                    <a href="{% url 'service_detail' service.id %}" class="btn btn-primary">View Details</a>
                 </div>
             </div>
-        {% empty %}
-            <p>No services available.</p>
-        {% endfor %}
-    </div>
+        </div>
+    {% empty %}
+        <p>No services available.</p>
+        <div style="width:100%;height:0;padding-bottom:83%;position:relative;"><iframe src="https://giphy.com/embed/HP7mtfNa1E4CEqNbNL" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/theoffice-HP7mtfNa1E4CEqNbNL">via GIPHY</a></p>
+    {% endfor %}
+</div>
+    <script>
+ $(document).ready(function() {
+    // Get all the card containers
+    var cards = $(".card-container .col-md-4");
+
+    // Add a listener to the search button
+    $("#search-button").on("click", function() {
+        // Get the search input value
+        var searchInput = $("#search-input").val().toLowerCase();
+
+        // Get the selected price range value
+        var priceRange = $("#price-filter").val();
+
+        var count = cards.length;
+        // Loop through all the card containers
+        cards.each(function(index, card) {
+            // Get the service name
+            var serviceName = $(card).find(".card-title").text().toLowerCase();
+
+            // Get the service price
+            var servicePrice = $(card).find(".card-price").text();
+
+            // Check if the service name contains the search input value
+            if (serviceName.indexOf(searchInput) >= 0) {
+                // Check if the service price is within the selected price range
+                if (priceRange == "all" || priceRange == "3000-" && parseInt(servicePrice) >= 3000 || parseInt(servicePrice) >= parseInt(priceRange.split("-")[0]) && parseInt(servicePrice) <= parseInt(priceRange.split("-")[1])) {
+                    // Show the card container
+                    $(card).show();
+                } else {
+                    // Hide the card container
+                    $(card).hide();
+                    count-=1;
+                }
+            } else {
+                // Hide the card container
+                $(card).hide();
+                count-=1;
+
+            }
+        });
+ if (count == 0) {
+            var message = $("<p>").text("No results found");
+            $cardContainer.append(message);
+        } 
+    });
+     $("#price-filter").on("change", function() {
+        // Trigger the search button click event
+        $("#search-button").trigger("click");
+    });
+});
+
+
+
+
+    </script>
 {% endblock %}
