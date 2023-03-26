@@ -10,11 +10,14 @@ from django.utils.translation import gettext_lazy as _
 
 class Customer(models.Model):
     name = models.CharField(max_length=122)
-    email = models.EmailField(unique=True)
+    email_id = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
 
+    class Meta:
+        verbose_name = "Customer"
+        verbose_name_plural = "Customers"
     def __str__(self):
         return self.name
 
@@ -25,6 +28,11 @@ class Service(models.Model):
         ('video', 'Videography'),
         ('decor', 'Decoration'),
         ('catering', 'Catering'),
+        ('music', 'Music DJ'),
+        ('makeup', 'Makeup'),
+        ('wedding_planner', 'Wedding Planner'),
+        ('resort', 'Resort')
+
     )
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
