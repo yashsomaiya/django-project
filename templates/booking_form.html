@@ -1,21 +1,68 @@
 {% extends 'base.html' %}
+{% block style %}
+    <style>
+        form {
+          margin: auto;
+          width: 50%;
+        }
 
+        input[type=text], input[type=email], input[type=tel], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=submit] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+
+        .container {
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+
+        .error-message {
+          color: red;
+        }
+
+    </style>
+{% endblock %}
 {% block content %}
   <h1>Book {{ service.title }}</h1>
   <form method="post" action="{% url 'book_service' service.id %}">
     {% csrf_token %}
-    <label for="name">Name:</label>
-    <input type="text" name="name" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" name="email" required>
-    <br>
-    <label for="phone">Phone:</label>
-    <input type="tel" name="phone" required>
-    <br>
-    <label for="payment">Payment made?</label>
-    <input type="checkbox" name="payment">
-    <br>
-    <input type="submit" value="Book now">
+      {{ form.as_p }}
+      <input type="hidden" name="service_id" value="{{ service.id }}">
+      <input type="hidden" name="featured_package_price" value="{{ service.featured_package_price }}">
+      <button type="submit" class="btn btn-success">Confirm</button>
+
+{#    <label for="name">Name:</label>#}
+{#    <input type="text" name="name" required>#}
+{#    <br>#}
+{#    <label for="email">Email:</label>#}
+{#    <input type="email" name="email" required>#}
+{#    <br>#}
+{#    <label for="phone">Phone:</label>#}
+{#    <input type="tel" name="phone" required>#}
+{#    <br>#}
+{#    <label for="payment">Payment made?</label>#}
+{#    <input type="checkbox" name="payment">#}
+{#    <br>#}
+{#    <input type="submit" value="Book now">#}
   </form>
 {% endblock %}
