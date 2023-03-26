@@ -57,19 +57,19 @@ class WeddingBooking(models.Model):
     Currency_CHOICES = (
         ('CAD', 'CAD'),
         ('USD', 'USD'),
-        ('INR', 'INR')
+        ('INR','INR')
     )
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    name = models.CharField(max_length=122)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    # customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     date_booked = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=200)
     featured_package_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     payment_currency = models.CharField(max_length=10, choices=Currency_CHOICES, default='CAD')
-
-    def __str__(self):
-        return f'{self.service.title} booking for {self.customer.name} on {self.date_booked}'
 
 
 class Feedback(models.Model):

@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.urls import reverse
+
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from django.views import View
 from django.contrib.auth.models import User, auth
+
+from .forms import BookingForm
 from .models import Service, Customer, WeddingBooking, Feedback, ContactForm, ContactNumber
 
 def accountlogin(request):
@@ -98,30 +101,29 @@ def customer_detail(request, customer_id):
 
 def book_service(request, service_id):
     service = get_object_or_404(Service, id=service_id)
+    form = BookingForm()
     if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        # address = request.POST['address']
-        # country = request.POST['country'] address=address, country=country
-        customer = Customer(name=name, email=email, phone=phone, )
-        customer.save()
-        booking = WeddingBooking(service=service, customer=customer,
-                                 featured_package_price=service.featured_package_price)
-        booking.save()
-        messages.success(request, 'Booking has been created!')
-        return redirect(reverse('booking_detail', args=(booking.id,)))
-    return render(request, 'booking_form.html', {'service': service})
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.service_id = service_id
+            booking.featured_package_price = service.featured_package_price
+            booking.save()
+            messages.success(request, 'Booking has been created!')
+            return redirect(reverse('booking_detail', args=(booking.id,)))
+    return render(request, 'booking_form.html',{'form':form,'service':service})
 
 
 def bookings(request):
     bookings = WeddingBooking.objects.all()
+    email = request.user.email
+    bookings = bookings.filter(email__exact=email)
     return render(request, 'bookings.html', {'bookings': bookings})
 
 
 def booking_detail(request, booking_id):
-    # booking = get_object_or_404(WeddingBooking, id=booking_id) {'booking': booking}
-    return render(request, 'booking_detail.html')
+    booking = get_object_or_404(WeddingBooking, id=booking_id)
+    return render(request, 'booking_detail.html', {'booking': booking})
 
 
 def pay_booking(request, booking_id):
@@ -197,3 +199,10 @@ class Feedbacks(View):
         else:
             messages.warning(request, "Please login first to post feedback.")
             return redirect('feedback')
+
+class CancelBooking(View):
+    def post(self, request):
+        id = request.POST['booking_id']
+        WeddingBooking.objects.filter(id=id).delete()
+        messages.success(request, 'Your booking canceled successfully')
+        return redirect(request.META['HTTP_REFERER'])
