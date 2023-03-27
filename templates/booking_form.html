@@ -2,67 +2,127 @@
 {% block style %}
     <style>
         form {
-          margin: auto;
-          width: 50%;
+            margin: auto;
+            width: 50%;
+            display: table;
+            border-collapse: separate;
+            border-spacing: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         input[type=text], input[type=email], input[type=tel], select {
-          width: 100%;
-          padding: 12px 20px;
-          margin: 8px 0;
-          display: inline-block;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: table-cell;
+            border: none;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
         }
 
         input[type=submit] {
-          width: 100%;
-          background-color: #4CAF50;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
         }
 
         input[type=submit]:hover {
-          background-color: #45a049;
+            background-color: #45a049;
         }
 
         .container {
-          background-color: #f2f2f2;
-          padding: 20px;
+            background-color: #f2f2f2;
+            padding: 20px;
         }
 
         .error-message {
-          color: red;
+            color: red;
         }
 
+        label {
+            display: table-cell;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .form-row {
+            display: table-row;
+        }
+
+        .form-row:first-child {
+            border-top: 1px solid #ddd;
+        }
+
+        .form-row:last-child {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .form-row:not(:last-child) {
+            border-bottom: 1px solid #ddd;
+        }
+        h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    }
+        footer{
+             position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+        }
     </style>
 {% endblock %}
 {% block content %}
-  <h1>Book {{ service.title }}</h1>
-  <form method="post" action="{% url 'book_service' service.id %}">
+    <br>
+    <h1>Book {{ service.title }}</h1>
+    <br>
+    <form method="post" action="{% url 'book_service' service.id %}">
     {% csrf_token %}
-      {{ form.as_p }}
-      <input type="hidden" name="service_id" value="{{ service.id }}">
-      <input type="hidden" name="featured_package_price" value="{{ service.featured_package_price }}">
-      <button type="submit" class="btn btn-success">Confirm</button>
+    <table class="table">
+        <tr>
+            <td><label for="{{ form.name.id_for_label }}">Name:</label></td>
+            <td>{{ form.name }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.email.id_for_label }}">Email:</label></td>
+            <td><input type="email" name="email" class="form-control" style="max-width: 300px;" placeholder="Email" maxlength="122" required id="id_email" value="{{ form.email.value }}"></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.phone.id_for_label }}">Phone:</label></td>
+            <td>{{ form.phone }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.location.id_for_label }}">Location:</label></td>
+            <td>{{ form.location }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.date_booked.id_for_label }}">Date:</label></td>
+            <td>{{ form.date_booked }}</td>
+        </tr>
+        <tr>
+            <input type="hidden" name="service_id" value="{{ service.id }}">
+            <input type="hidden" name="featured_package_price" value="{{ service.featured_package_price }}">
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center"><button type="submit" class="btn btn-success">Confirm</button></td>
+        </tr>
+    </table>
+</form>
 
-{#    <label for="name">Name:</label>#}
-{#    <input type="text" name="name" required>#}
-{#    <br>#}
-{#    <label for="email">Email:</label>#}
-{#    <input type="email" name="email" required>#}
-{#    <br>#}
-{#    <label for="phone">Phone:</label>#}
-{#    <input type="tel" name="phone" required>#}
-{#    <br>#}
-{#    <label for="payment">Payment made?</label>#}
-{#    <input type="checkbox" name="payment">#}
-{#    <br>#}
-{#    <input type="submit" value="Book now">#}
-  </form>
+    <br>
 {% endblock %}

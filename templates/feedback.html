@@ -3,46 +3,97 @@
 {% block title %}
     User Feedbacks
 {% endblock title %}
+{% block style %}
+    <style>
+ footer{
+             position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+        }
+   /* Animation for feedback cards */
+    .card {
+        transform-style: preserve-3d;
+        transition: all 0.5s ease-out;
+    }
+    .card:hover {
+        transform: translateY(-10px) rotateX(15deg);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+    }
 
+    /* Styling for feedback comment box */
+    .card-form {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .card-form:hover {
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .card-form h6 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+    .card-form textarea {
+        font-size: 16px;
+        border-radius: 5px;
+        resize: none;
+    }
+    .card-form input[type="submit"] {
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .card-form input[type="submit"]:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+    </style>
+{% endblock %}
 {% block content %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center p-4 text-success">
-                <h4>User Feedbacks</h4>
-            </div>
 
-            <!-- this section is about the feedbacks -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center p-4 text-success">
+            <h4 style="color: #008080">User Feedbacks</h4>
+        </div>
 
-            {% for feedback in feedback %}
-            <div class="col-lg-12 m-1">
-                <div class="card border border-white">
-                    <h6 class="card-header bg-white pb-0 text-primary">{{feedback.name}}</h6>
-                    <div class="card-body">
-                        <p class="card-title text-secondary pt-0">{{feedback.created_at}}</p>
-                        <p class="card-text text-success">{{feedback.feedback}}</p>
-                    </div>
+        <!-- this section is about the feedbacks -->
+
+        {% for feedback in feedback %}
+        <div class="col-lg-12 m-1">
+            <div class="card border border-white">
+                <h6 class="card-header bg-white pb-0 text-primary">{{feedback.name}}</h6>
+                <div class="card-body">
+                    <p class="card-title text-secondary pt-0">{{feedback.created_at}}</p>
+                    <p class="card-text text-success">{{feedback.feedback}}</p>
                 </div>
             </div>
-            {% endfor %}
+        </div>
+        {% endfor %}
 
-            <!-- this section is for feedback comment box -->
+        <!-- this section is for feedback comment box -->
 
-            <div class="col-lg-12 m-2">
-                <div class="card border border-info">
-                    <div class="card-body">
-                        <form method="post" action="feedback">
-                            {% csrf_token %}
-                            <h6 class="card-title">Comment your feedback: </h6>
-                            <!-- <input class="text-left" type="text" name="feedback" id="feedback" style="width: 100%;"
-                                   placeholder="write your feedback"> -->
-                            <textarea class="form-control" rows="5" id="feedback" name="feedback" placeholder="write your feedback"></textarea>
-                            <input type="submit" class="btn btn-primary" value="submit">
-                        </form>
-                    </div>
+        <div class="col-lg-12 m-2">
+            <div class="card border border-info card-form">
+                <div class="card-body">
+                    <form method="post" action="feedback">
+                        {% csrf_token %}
+                        <h6 class="card-title">Comment your feedback:</h6>
+                        <textarea class="form-control" rows="5" id="feedback" name="feedback" placeholder="Write your feedback"></textarea>
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 {% endblock content %}

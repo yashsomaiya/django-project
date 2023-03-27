@@ -7,8 +7,18 @@
             padding: 20px;
             margin: 0 auto;
             font-family: Arial, sans-serif;
+            animation: zoom-in 0.3s ease-in-out forwards;
         }
-
+        @keyframes zoom-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
         .ticket-header {
             background-color: #E7E7E7;
             text-align: center;
@@ -40,6 +50,13 @@
             margin-top: 20px;
             text-align: center;
         }
+
+        footer{
+             position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+        }
     </style>
 {% endblock %}
 {% block content %}
@@ -48,7 +65,7 @@
         <div class="ticket-header">Booking Confirmation</div>
         <table class="ticket-table">
             <tr>
-                <th>Booking details:</th>
+                <th>Booking Date:</th>
                 <td>{{ booking.date_booked }}</td>
             </tr>
             <tr>
@@ -77,7 +94,17 @@
             </tr>
         </table>
         <div class="ticket-footer">Thank you for booking {{ service.title }}</div>
+    <a href="{% url 'booking_pdf' booking.id %}">
+    <button type="button" class="btn btn-primary" class="print-button">Print PDF</button>
+</a>
+
     </div>
+    <br>
+    <script>
+const bookingConfirmation = document.querySelector('.ticket-container');
+bookingConfirmation.style.visibility = 'visible';
+
+</script>
 {% endblock %}
 
 {#.booking-container {#}

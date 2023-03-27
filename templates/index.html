@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -8,13 +9,14 @@
     <link rel="stylesheet" href="css/fullpage.min.css" />
     <link rel="stylesheet" href="css/magnific-popup.css" />
     <style>
+
        .row {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
-  background-image: linear-gradient(to bottom right, #8D5B4C, #D88B5C, #FFB378);
+  background-image: linear-gradient(to bottom right, #e9ecef, #e9ecef, #e9ecef);
   animation: gradient 5s ease infinite;
 }
 
@@ -42,9 +44,9 @@
 
 .card-text {
   font-size: 16px;
-  line-height: 1.5;
-  color: #666;
-  margin-bottom: 20px;
+  height: 100px;
+    overflow: hidden;
+
 }
 
 .btn-primary {
@@ -57,7 +59,10 @@
   background-color: #D64161;
   border-color: #D64161;
 }
-
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -72,104 +77,245 @@
 h1{
     color: white;
 }
+body{
+    overflow-x: hidden;
+}
 
     </style>
 
-    <div class="navv">
+
+
+<div class="navv">
 <div class = "container-fluid px-0" >
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
   <div class="carousel-inner">
-    <div class="carousel-item active" style="left:0;margin:0px;">
-      <img src="/static/img/slider1.jpeg" style="height:45em" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Event Management Inc.</h1>
-         <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
+        <div class="carousel-item active" style="left:0;margin:0px;">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider1.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider2.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+      <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider4.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+     <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider5.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+     <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider6.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
     <div class="carousel-item">
-      <img src="/static/img/slider2.jpeg" style="height:45em" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Event Management Inc.</h1>
-        <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider3.webp" style="height:45em" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block" >
-        <h1>Event Management Inc.</h1>
-          <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider4.webp" style="height:45em" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Event Management Inc.</h1>
-          <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider5.jpeg" style="height:45em" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Event Management Inc.</h1>
-        <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider6.jpeg" style="height:45em"  class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block" >
-        <h1>Event Management Inc.</h1>
-        <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider7.jpeg" style="height:45em" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Event Management Inc.</h1>
-         <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="/static/img/slider8.jpeg" style="height:45em" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>Event Management Inc.</h1>
-        <h3>Book our Services for your Grand Wedding</h3>
-        <h5>Scroll down to view upcoming Services</h5>
-      </div>
-    </div>
-  </div>
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider7.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider8.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 1rem; color: black;"></span>
     <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon"  style="font-size: 1rem; color: black;"></span>
     <span class="sr-only">Next</span>
-  </a>
+</a>
+
 </div>
 </div>
 </div>
-    <div class="row">
-        {% for service in services %}
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/1600x900/?{{service.header}},{{service.service_type}}" alt="{{ service.title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ service.title }}</h5>
-                        <p class="card-text">{{ service.header }}</p>
-                        <h3 class="card-text" id="eventschedule" style="color:red;font-family:pt seriff;padding-top:10px;font-weight: bolder;">${{service.featured_package_price}}</h3>
-                        <a href="{% url 'service_detail' service.id %}" class="btn btn-primary">View Details</a>
+
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" style="height: 50px; color: red;width: 500px;border-radius:32px;" placeholder="Search by service name" id="search-input">
+            <div class="input-group-append">
+                <button class="btn btn-warning" style="height: 50px;border-radius:32px;width:100px;" type="button" id="search-button">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group mb-3">
+            <select class="form-control" id="price-filter">
+                <option value="all">All prices</option>
+                <option value="0-1000">$0-$1000</option>
+                <option value="1000-2000">$1000-$2000</option>
+                <option value="2000-3000">$2000-$3000</option>
+                <option value="3000-">$3000+</option>
+            </select>
+
+        </div>
+    </div>
+</div>
+
+    <div class="card-container row">
+    {% for service in services %}
+        {% for choice in service_type_choices %}
+           {% if choice.0 == service.service_type %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{service.image.url}}" alt="{{ service.title }}">
+
+                <div class="card-body" style="height: 60%;">
+                      <h3 class="card-text"  style="text-align:center;"><button class="btn btn-danger" style="height: auto;border-radius:32px;background:#4361ee;width:auto;align-items:center;" type="submit">{{choice.1}}</button></h3>
+                      <h2 class="card-title" style="color:darkblue;" >{{service.title}}</h2>
+                      <h4 class="card-text"  style="color:darkblue;">{{service.header}}</h4>
+                      <h3 class="card-text card-price"  style="color:red;font-weight:bolder;padding-top:10px;">{{service.featured_package_price}}</h3>
+                     <div class="text-right" style="right:10%;bottom: 5%;position: absolute;">
+                    <a href="{% url 'service_detail' service.id %}">
+                      <button class="btn" style="height: 50px;width:120px;color:white;background: #4895ef;font-family: sans seriff;" type="submit" >More Info</button>
+                    </a>
                     </div>
                 </div>
             </div>
-        {% empty %}
-            <p>No services available.</p>
-        {% endfor %}
-    </div>
-{% endblock %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% empty %}
+        <p>No services available.</p>
+        <div style="width:100%;height:0;padding-bottom:83%;position:relative;"><iframe src="https://giphy.com/embed/HP7mtfNa1E4CEqNbNL" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/theoffice-HP7mtfNa1E4CEqNbNL">via GIPHY</a></p>
+    {% endfor %}
+</div>
+
+{#    <div class="card-container row">#}
+{#    {% for service in services %}#}
+{#        {% for choice in service_type_choices %}#}
+{#           {% if choice.0 == service.service_type %}#}
+{#        <div class="col-md-4 mb-4">#}
+{#            <div class="card">#}
+{#                <img class="card-img-top" src="https://source.unsplash.com/1600x900/?{{service.header}},{{service.service_type}}" alt="{{ service.title }}">#}
+{#                <div class="card-body" style="height: 60%;">#}
+{#                    <h3 class="card-text"  style="text-align:center;"><button class="btn btn-danger" style="height: auto;border-radius:32px;background:#4361ee;width:auto;align-items:center;" type="submit">{{choice.1}}</button></h3>#}
+{#                    <h2 class="card-title" style="color:darkblue;" >{{ service.title }}</h2>#}
+{#                    <h4 class="card-text"  style="color:darkblue;">{{service.header}}</h4>#}
+{#                    <h3 class="card-text card-price" style="color:red;font-weight:bolder;padding-top:10px;">${{ service.featured_package_price }}</h3>#}
+{##}
+{#     {% comment %}             <p class="card-title" >{{service.title}}</p>#}
+{#                  <p class="card-text"  >{{service.header}}</p>#}
+{#                  <p class="card-text card-price"  >${{service.featured_package_price}}</p>{% endcomment %}#}
+{#                    <a href="{% url 'service_detail' service.id %}" class="btn btn-primary">View Details</a>#}
+{#                    <div class="text-right" style="right:10%;bottom: 5%;position: absolute;">#}
+{#                    <a href="{% url 'service_detail' service.id %}">#}
+{#                      <button class="btn" style="height: 50px;width:120px;color:white;background: #4895ef;font-family: sans seriff;" type="submit" >More Info</button>#}
+{#                    </a>#}
+{#                   </div>#}
+{#                </div>#}
+{#            </div>#}
+{#         {% endif %}#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% empty %}#}
+{#        <p>No services available.</p>#}
+{#    {% endfor %}#}
+{#</div>#}
+     <script>
+$(document).ready(function() {
+    // Get all the card containers
+    var cards = $(".card-container .col-md-4");
+
+    // Add a listener to the search button
+    $("#search-button").on("click", function() {
+        // Get the search input value
+        var searchInput = $("#search-input").val().toLowerCase();
+
+        // Get the selected price range value
+        var priceRange = $("#price-filter").val();
+
+        // Loop through all the card containers
+        cards.each(function(index, card) {
+            // Get the service name
+            var serviceName = $(card).find(".card-title").text().toLowerCase();
+
+            // Get the service price
+            var servicePrice = $(card).find(".card-price").text();
+
+            // Check if the service name contains the search input value
+            if (serviceName.indexOf(searchInput) >= 0) {
+                // Check if the service price is within the selected price range
+                if (priceRange == "all" || priceRange == "3000-" && parseInt(servicePrice) >= 3000 || parseInt(servicePrice) >= parseInt(priceRange.split("-")[0]) && parseInt(servicePrice) <= parseInt(priceRange.split("-")[1])) {
+                    // Show the card container
+                    $(card).show();
+                } else {
+                    // Hide the card container
+                    $(card).hide();
+                }
+            } else {
+                // Hide the card container
+                $(card).hide();
+            }
+        });
+    });
+
+    // Add a listener to the price range selector
+    $("#price-filter").on("change", function() {
+        // Trigger the search button click event
+        $("#search-button").trigger("click");
+    });
+});
+
+    </script>
+   {% endblock %}
+
+

@@ -66,14 +66,14 @@ class WeddingBooking(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     # customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    date_booked = models.DateTimeField(auto_now_add=True)
+    date_booked = models.DateField()
     location = models.CharField(max_length=200)
     featured_package_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     payment_currency = models.CharField(max_length=10, choices=Currency_CHOICES, default='CAD')
 
 
 class Feedback(models.Model):
-    name = models.CharField(verbose_name=_("user name"), max_length=255, null=True, blank=True)
+    name = models.CharField(verbose_name=_("name"), max_length=255, null=True, blank=True)
     feedback = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)

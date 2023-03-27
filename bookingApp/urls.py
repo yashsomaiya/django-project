@@ -23,6 +23,8 @@ urlpatterns = [
     path('feedback', Feedbacks.as_view(), name="feedback"),
     path('profile', Profile.as_view(), name="profile"),
     path('bookings/cancel_booking', CancelBooking.as_view(), name="cancel_booking"),
+    path('addservice/', views.service_add, name='service_add'),
+    path('booking/<uuid:booking_id>/pdf/', booking_pdf, name='booking_pdf'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
