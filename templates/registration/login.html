@@ -390,20 +390,21 @@ footer{
         </label>
           <label>
           <span>Contact Number</span>
-          <input type="number" id="number" name="number">
+          <input type="tel" id="number" name="number" pattern="[0-9]{10}" required>
         </label>
         <label>
           <span>Email</span>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" >
         </label>
            <!--label>
           <span>Country</span>
           <input type="country" id="country" name="country">
         </label-->
-        <label>
-          <span>Password</span>
-          <input type="password" id="password" name="password">
-        </label>
+       <label>
+  <span>Password</span>
+  <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+</label>
+
         <button type="submit" class="submit">Sign Up Now</button>
         <p class="forgot-pass">Your details will never be shared with anyone.</p>
       </div>
@@ -412,4 +413,5 @@ footer{
   </div>
 </div>
 </body>
+
 {% endblock %}

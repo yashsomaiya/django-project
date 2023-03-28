@@ -388,22 +388,22 @@ footer{
           <span>User Name</span>
           <input type="text" id="username" name="username">
         </label>
-          <label>
+         <label>
           <span>Contact Number</span>
-          <input type="number" id="number" name="number">
+          <input type="tel" id="number" name="number" pattern="[0-9]{10}" required>
         </label>
         <label>
           <span>Email</span>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" >
         </label>
            <!--label>
           <span>Country</span>
           <input type="country" id="country" name="country">
         </label-->
-        <label>
-          <span>Password</span>
-          <input type="password" id="password" name="password">
-        </label>
+       <label>
+  <span>Password</span>
+  <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required>
+</label>
         <button type="submit" class="submit">Sign Up Now</button>
         <p class="forgot-pass">Your details will never be shared with anyone.</p>
       </div>
@@ -412,4 +412,27 @@ footer{
   </div>
 </div>
 </body>
+    <script>
+  const phoneNumber = document.getElementById('number');
+
+  // Add validation for phone number field
+  phoneNumber.addEventListener('input', () => {
+    if (phoneNumber.value.length > 10) {
+      phoneNumber.setCustomValidity('Phone number should not exceed 10 digits.');
+    } else {
+      phoneNumber.setCustomValidity('');
+    }
+  });
+
+  const password = document.getElementById('password');
+
+  // Add validation for password field
+  password.addEventListener('input', () => {
+    if (password.value.length < 8) {
+      password.setCustomValidity('Password should be at least 8 characters long.');
+    } else {
+      password.setCustomValidity('');
+    }
+  });
+</script>
 {% endblock %}
