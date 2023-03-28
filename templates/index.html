@@ -1,37 +1,198 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-    <h1>Welcome to our wedding services website!</h1>
-    <p>Here are some of our featured services:</p>
 
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/fullpage.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
     <style>
-        .card {
-            height: 100%;
-        }
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+       .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-image: linear-gradient(to bottom right, #e9ecef, #e9ecef, #e9ecef);
+  animation: gradient 5s ease infinite;
+}
 
-        .card-title {
-            font-size: 20px;
-        }
+.card {
+  background-color: #FFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
 
-        .card-text {
-            font-size: 16px;
-            height: 100px;
-            overflow: hidden;
-        }
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  height: 100px;
+    overflow: hidden;
+
+}
+
+.btn-primary {
+  background-color: #FF6B6B;
+  border-color: #FF6B6B;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #D64161;
+  border-color: #D64161;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+h1{
+    color: white;
+}
+body{
+    overflow-x: hidden;
+}
 
     </style>
+
+
+
+<div class="navv">
+<div class = "container-fluid px-0" >
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+  <div class="carousel-inner">
+        <div class="carousel-item active" style="left:0;margin:0px;">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider1.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider2.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+      <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider4.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+     <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider5.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+     <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider6.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+    <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider7.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="d-flex align-items-center justify-content-center" style="height: 35em; position: relative;">
+            <div style="position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 20em; height: 20em; border-radius: 50%; background-color: white;">
+              <img src="/static/img/slider8.jpeg" style="height: 20em; width: 20em; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+          </div>
+          <div class="carousel-caption d-none d-md-block" style="text-align: center;">
+            <h1>Event Management Inc.</h1>
+            <h3 style="color:black">Book our Services for your Grand Wedding</h3>
+            <h5 style="color:black">Scroll down to view upcoming Services</h5>
+          </div>
+        </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="font-size: 1rem; color: black;"></span>
+    <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon"  style="font-size: 1rem; color: black;"></span>
+    <span class="sr-only">Next</span>
+</a>
+
+</div>
+</div>
+</div>
+
 
   <div class="row">
     <div class="col-md-6">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search by service name" id="search-input">
+            <input type="text" class="form-control" style="height: 50px; color: red;width: 500px;border-radius:32px;" placeholder="Search by service name" id="search-input">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="search-button">Search</button>
+                <button class="btn btn-warning" style="height: 50px;border-radius:32px;width:100px;" type="button" id="search-button">Search</button>
             </div>
         </div>
     </div>
@@ -51,25 +212,66 @@
 
     <div class="card-container row">
     {% for service in services %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="{{ service.image.url}}" alt="{{ service.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ service.title }}</h5>
-                    <p class="card-text">{{ service.desc }}</p>
-                    <p class="card-text card-price">{{ service.featured_package_price }}</p>
+        {% for choice in service_type_choices %}
+           {% if choice.0 == service.service_type %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{service.image.url}}" alt="{{ service.title }}">
 
-                    <a href="{% url 'service_detail' service.id %}" class="btn btn-primary">View Details</a>
+                <div class="card-body" style="height: 60%;">
+                      <h3 class="card-text"  style="text-align:center;"><button class="btn btn-danger" style="height: auto;border-radius:32px;background:#4361ee;width:auto;align-items:center;" type="submit">{{choice.1}}</button></h3>
+                      <h2 class="card-title" style="color:darkblue;" >{{service.title}}</h2>
+                      <h4 class="card-text"  style="color:darkblue;">{{service.header}}</h4>
+                      <h3 class="card-text card-price"  style="color:red;font-weight:bolder;padding-top:10px;">{{service.featured_package_price}}</h3>
+                     <div class="text-right" style="right:10%;bottom: 5%;position: absolute;">
+                    <a href="{% url 'service_detail' service.id %}">
+                      <button class="btn" style="height: 50px;width:120px;color:white;background: #4895ef;font-family: sans seriff;" type="submit" >More Info</button>
+                    </a>
+                    </div>
                 </div>
             </div>
+                {% endif %}
+            {% endfor %}
         </div>
     {% empty %}
         <p>No services available.</p>
         <div style="width:100%;height:0;padding-bottom:83%;position:relative;"><iframe src="https://giphy.com/embed/HP7mtfNa1E4CEqNbNL" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/theoffice-HP7mtfNa1E4CEqNbNL">via GIPHY</a></p>
     {% endfor %}
 </div>
-    <script>
- $(document).ready(function() {
+
+{#    <div class="card-container row">#}
+{#    {% for service in services %}#}
+{#        {% for choice in service_type_choices %}#}
+{#           {% if choice.0 == service.service_type %}#}
+{#        <div class="col-md-4 mb-4">#}
+{#            <div class="card">#}
+{#                <img class="card-img-top" src="https://source.unsplash.com/1600x900/?{{service.header}},{{service.service_type}}" alt="{{ service.title }}">#}
+{#                <div class="card-body" style="height: 60%;">#}
+{#                    <h3 class="card-text"  style="text-align:center;"><button class="btn btn-danger" style="height: auto;border-radius:32px;background:#4361ee;width:auto;align-items:center;" type="submit">{{choice.1}}</button></h3>#}
+{#                    <h2 class="card-title" style="color:darkblue;" >{{ service.title }}</h2>#}
+{#                    <h4 class="card-text"  style="color:darkblue;">{{service.header}}</h4>#}
+{#                    <h3 class="card-text card-price" style="color:red;font-weight:bolder;padding-top:10px;">${{ service.featured_package_price }}</h3>#}
+{##}
+{#     {% comment %}             <p class="card-title" >{{service.title}}</p>#}
+{#                  <p class="card-text"  >{{service.header}}</p>#}
+{#                  <p class="card-text card-price"  >${{service.featured_package_price}}</p>{% endcomment %}#}
+{#                    <a href="{% url 'service_detail' service.id %}" class="btn btn-primary">View Details</a>#}
+{#                    <div class="text-right" style="right:10%;bottom: 5%;position: absolute;">#}
+{#                    <a href="{% url 'service_detail' service.id %}">#}
+{#                      <button class="btn" style="height: 50px;width:120px;color:white;background: #4895ef;font-family: sans seriff;" type="submit" >More Info</button>#}
+{#                    </a>#}
+{#                   </div>#}
+{#                </div>#}
+{#            </div>#}
+{#         {% endif %}#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    {% empty %}#}
+{#        <p>No services available.</p>#}
+{#    {% endfor %}#}
+{#</div>#}
+     <script>
+$(document).ready(function() {
     // Get all the card containers
     var cards = $(".card-container .col-md-4");
 
@@ -81,7 +283,6 @@
         // Get the selected price range value
         var priceRange = $("#price-filter").val();
 
-        var count = cards.length;
         // Loop through all the card containers
         cards.each(function(index, card) {
             // Get the service name
@@ -99,28 +300,22 @@
                 } else {
                     // Hide the card container
                     $(card).hide();
-                    count-=1;
                 }
             } else {
                 // Hide the card container
                 $(card).hide();
-                count-=1;
-
             }
         });
- if (count == 0) {
-            var message = $("<p>").text("No results found");
-            $cardContainer.append(message);
-        } 
     });
-     $("#price-filter").on("change", function() {
+
+    // Add a listener to the price range selector
+    $("#price-filter").on("change", function() {
         // Trigger the search button click event
         $("#search-button").trigger("click");
     });
 });
 
-
-
-
     </script>
-{% endblock %}
+   {% endblock %}
+
+

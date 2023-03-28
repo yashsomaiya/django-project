@@ -6,27 +6,33 @@
             {{ page_title|default:"AdventureAwaits" }}
         {% endblock title %}
     </title>
+{% load sweetify %}
+{% sweetify %}
     {% block style %}
     {% endblock %}
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-<script>
-  new WOW().init();
-</script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
+
+<style>
+    nav {
+        background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+    }
+
+.active .nav-link{
+   color:white;
+}
+</style>
 </head>
 <body>
-<style>
-
-</style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{% url 'index' %}"><b>AdventureAwaits</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -37,16 +43,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
-            <li class="{% if request.path == url %}active{% endif %}">
+            <li class="{% if request.path == '/' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="{% if request.path == url %}active{% endif %}">
+            <li class="{% if request.path == '/about' %}active{% endif %}">
+
                 <a class="nav-link" href="{% url 'about' %}">About<span class="sr-only"></a>
             </li>
-            <li class="{% if request.path == url %}active{% endif %}">
+            <li class="{% if request.path == '/feedback' %}active{% endif %}">
+
                 <a class="nav-link" href="{% url 'feedback' %}">User Feedbacks</a>
             </li>
-            <li class="{% if request.path == url %}active{% endif %}">
+            <li class="{% if request.path == '/contact' %}active{% endif %}">
+
                 <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
             </li>
         </ul>
@@ -65,21 +74,22 @@
 
                 {% if user.is_superuser %}
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="admin/">Admin Panel</a>
+                    <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a>
+                <a class="dropdown-item" href="addservice/">Add service</a>
                 </div>
                 {% endif %}
 
                 {% if not user.is_superuser %}
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                    <a class="dropdown-item" href="{% url 'booking_history' %}">Booking History</a>
+                    <a class="dropdown-item" href="{% url 'bookings' %}">Booking History</a>
                 </div>
 
                 {% endif %}
             </li>
 
             <li class="nav-item">
-{#                <a class="nav-link" href="{% url 'logout' %}">Logout</a>#}
+                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
             {% endif %}
 
@@ -89,11 +99,11 @@
 
             {% url 'login' as url %}
             <li class="{% if request.path == url %}active{% endif %}">
-{#                <a class="nav-link" href="{% url 'login' %}">Login</a>#}
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             {% url 'signup' as url %}
-            <li class="{% if request.path == url %}active{% endif %}">
-{#                <a class="nav-link" href="{% url 'signup' %}">Register</a>#}
+            <li class="{% if request.path == '/signup' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'signup' %}">Register</a>
             </li>
 
             {% endif %}
@@ -119,9 +129,9 @@
 {% endblock content %}
 
 <!-- footer -->
-<footer class="bg-light text-center text-lg-start fixed-bottom">
+<footer class="bg-light text-center text-lg-start mt-2"  " >
     <!-- Copyright -->
-    <div class="text-center p-3 bg-dark" style="color:white;">
+    <div class="text-center p-3 bg-dark" style="color:white;background: -webkit-linear-gradient(left, #7579ff, #b224ef);">
         Copyright &copy;<script>document.write(new Date().getFullYear());</script>
         Created by Team AdventureAwaits
     </div>
@@ -129,10 +139,14 @@
 </footer>
 
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="/static/js/script.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
+

@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: shantam@uwindsor.ca
+Date: Mon, 27 Mar 2023 22:47:38 -0000
+Message-ID: 
+ <167995725830.84882.8594536797740492467@Shreyashs-MacBook-Pro.local>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/accounts/reset/MQ/blqsne-a2c9c529cb9c9e849b227c78932fe6f4/
+
+Your username, in case you’ve forgotten: shrey
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

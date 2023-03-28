@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8086
+From: webmaster@localhost
+To: shantam@uwindsor.ca
+Date: Sun, 26 Mar 2023 16:36:03 -0000
+Message-ID: <167984856383.3834.14516523955912642677@1.0.0.127.in-addr.arpa>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8086.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8086/accounts/reset/MQ/blogs3-5b222436c21f7f71e060985fa8da7335/
+
+Your username, in case you’ve forgotten: shrey
+
+Thanks for using our site!
+
+The 127.0.0.1:8086 team
+
+
+
+-------------------------------------------------------------------------------

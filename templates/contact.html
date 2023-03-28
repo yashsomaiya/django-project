@@ -3,29 +3,96 @@
 {% block title %}
     Contact Us
 {% endblock title %}
-
+{% block style %}
+    <style>
+    footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    /* Update styles for the contacts section */
+    .contacts-section {
+        background-color: #f7f7f7;
+        padding: 40px 0;
+    }
+    .contacts-section h4 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    .contacts-table {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    .contacts-table th {
+        background-color: #333;
+        color: #fff;
+    }
+    .contacts-table td {
+        text-align: center;
+    }
+    /* Update styles for the contact form */
+    .contact-form {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+        padding: 40px;
+    }
+    .contact-form h6 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .form-control {
+        border-radius: 0;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        margin-bottom: 20px;
+    }
+    .form-control:focus {
+        border-color: #333;
+    }
+    .form-control::placeholder {
+        color: #999;
+    }
+    .form-control:focus::placeholder {
+        color: #ccc;
+    }
+    .form-control:focus + .input-group-append .btn {
+        background-color: #333;
+        color: #fff;
+    }
+    .input-group-append .btn {
+        background-color: #f7f7f7;
+        border: none;
+        border-radius: 0;
+        color: #333;
+    }
+    </style>
+{% endblock %}
 {% block content %}
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center p-4 text-success">
-                <h4>Contacts</h4>
+            <div class="col-lg-12 text-center p-4 text-black " style="color: #008080" >
+                <h4>Contact Us</h4>
             </div>
 
             <!-- this section is for the contacts -->
 
             <div class="col-lg-12 m-1 mx-auto">
-                <table class="table table-hover">
+                <table class="table">
                     <thead class="bg-dark text-white text-center">
                       <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Phone Number</th>
+                        <th scope="col" style="background: #f0f8ff;color: #000000">Name</th>
+                        <th scope="col" style="background: #f0f8ff;color: #000000">Phone Number</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row" class="text-center">Team AdventureAwaits</th>
-                        <td class="text-center">(999) 999-9999</td>
+                        <th scope="row" class="text-center"style="color: #008080" >Team AdventureAwaits</th>
+                        <td class="text-center" style="color: #008080">(999) 999-9999</td>
                       </tr>
                     </tbody>
                   </table>
@@ -46,7 +113,7 @@
                                 <input type="email" name="email" class="form-control" id="email" placeholder="enter your email">
                             </div>
                             <textarea class="form-control" rows="5" id="message" name="message" placeholder="write your message"></textarea>
-                            <input type="submit" class="btn btn-primary mt-2" value="submit">
+                            <input type="submit" class="btn btn-success mt-2" value="Submit">
                         </form>
                     </div>
                 </div>

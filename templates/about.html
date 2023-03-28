@@ -38,16 +38,82 @@
             max-width: 800px;
             margin: 0 auto;
         }
+        footer{
+             position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+        }
+         .circles {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 20px;
+        }
+
+        .circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        section {
+  background-color: #F0F8FF;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  color: #333333;
+  font-family: 'Helvetica Neue', sans-serif;
+  padding: 50px;
+  text-align: justify;
+}
+
+h1 {
+  color: #008080;
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 1px 1px #F0F8FF;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+
     </style>
 {% endblock %}
 {% block content %}
     <br>
     <section>
-		<h1>About AdventureAwaits</h1>
+		<h1>About AdventureAwaits</h1><br>
 		<p>AdventureAwaits is a convenient and user-friendly platform for booking and managing events. Our app offers a wide variety of events packages and allows users to book events quickly and easily.</p>
 		<p>With our app, you can browse events, view event details and prices, and choose your locations. You can also manage your bookings, view your order history.</p>
 		<p>Our mission is to provide a seamless and enjoyable event booking experience for our users. We are constantly updating and improving our app to meet the evolving needs of our customers.</p>
 		<p>Thank you for choosing AdventureAwaits for your event needs!</p>
     <br>
-	</section>
+
+    <div class="circles">
+        <div class="circle">
+            <img src="https://media.licdn.com/dms/image/D5603AQHe4FKDsBXfTA/profile-displayphoto-shrink_800_800/0/1667102907845?e=1685577600&v=beta&t=MKOEhOgpYQ6XduzYMlDl8ldHkL4_aEfKtm1Av50arKo" alt="Henish">
+        </div>
+        <div class="circle">
+            <img src="https://media.licdn.com/dms/image/D5603AQGYkNQkIPbAWw/profile-displayphoto-shrink_400_400/0/1667090835831?e=1685577600&v=beta&t=Lb0uhUsrkp3Asayzb416HUFVRr3AC1MqQRg_0DGV_k4" alt="Yash">
+        </div>
+        <div class="circle">
+            <img src="https://media.licdn.com/dms/image/C4E03AQGNBuwQyGY66g/profile-displayphoto-shrink_800_800/0/1637256522613?e=1685577600&v=beta&t=ArZaoO3OK-fmF7IWiVmqY_it8RIDDbdrQi2zyUhcceA" alt="Shreyash">
+        </div>
+        <div class="circle">
+            <img src="https://media.licdn.com/dms/image/C5603AQFWMBHf6UWhkw/profile-displayphoto-shrink_800_800/0/1657114032213?e=1685577600&v=beta&t=DI912vh40szkFyoTl1g3bYXCY9OieBYKRd2-e5JwfmQ
+" alt="apurv">
+        </div>
+    </div>
+</section>
 {% endblock %}

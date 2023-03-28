@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import url
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path ( '' , include ( 'bookingApp.urls' ) ) ,
+    path("admin/", admin.site.urls,name='admin'),
+    path ( '' , include ( 'bookingApp.urls' )),
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'

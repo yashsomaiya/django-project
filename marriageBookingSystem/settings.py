@@ -38,8 +38,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'bookingApp.apps.BookingappConfig',
+    'social_django',
+    'sweetify',
 
 ]
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -49,6 +54,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = "marriageBookingSystem.urls"
@@ -65,6 +71,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
             ],
         },
     },
@@ -102,7 +109,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1005927660414-539nlkn7hjekh88qgkrq8mjvus4k66vg.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIAL_AUTH_GITHUB_OAUTH2_KEY = '01b0f4dcf876b91aa59c'
+SOCIAL_AUTH_GITHUB_OAUTH2_SECRET = '2bdf43ce8c04ac3a1adbba3624617d02480ef9c1'
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -124,10 +142,16 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 
 STATICFILES_DIRS= (
-    os.path.join(BASE_DIR,'statics'),
+    os.path.join(BASE_DIR,'templates/static'),
 )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
